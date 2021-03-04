@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+import bcrypt from "bcrypt";
 
 const data = {
     users : [
@@ -19,7 +19,6 @@ const data = {
     ],
     products: [
         {
-            _id:'1',
             name : "Full Sleeves Red Tee",
             category : "Tops",
             brand : "Babyhug",
@@ -31,7 +30,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'2',
             name : "Navy Blue Winter Wear Tee",
             category : "Tops",
             brand : "Olio",
@@ -43,7 +41,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'3',
             name : "Red Checkered Tee",
             category : "Tops",
             brand : "Babyhug",
@@ -55,7 +52,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'4',
             name : "Blue Printed Skirt",
             category : "Skirts",
             brand : "Ed-a-Mamma",
@@ -67,7 +63,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'5',
             name : "Yellow Polka Dotted Skirt",
             category : "Skirts",
             brand : "Kookie",
@@ -79,7 +74,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'6',
             name : "Red Denim Skirt",
             category : "Skirts",
             brand : "Babyhug",
@@ -91,7 +85,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'7',
             name : "Red Denim Skirt",
             category : "Skirts",
             brand : "Babyhug",
@@ -103,7 +96,6 @@ const data = {
             countInStock: 5
         },
         {
-            _id:'8',
             name : "Red Denim Skirt",
             category : "Skirts",
             brand : "Babyhug",
