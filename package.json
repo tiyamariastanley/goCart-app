@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-frontend && npm run build",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js",
     "frontend": "cd frontend && npm start",
-    "dev": "concurrently \"nodemon backend/server.js\" \"npm run frontend\"",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "dev": "concurrently -n 'server,client' -c 'green,blue' \"nodemon backend/server.js\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
