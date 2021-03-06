@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/gocartDB",{ useNewUrlParser: true ,useUnifiedTopology: true,useCreateIndex: true});
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true ,useUnifiedTopology: true,useCreateIndex: true});
 mongoose.connection.once("open", function() {
   console.log("Connection with MongoDB was successful");
 });
