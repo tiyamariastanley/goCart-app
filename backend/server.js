@@ -18,11 +18,6 @@ mongoose.connection.once("open", function() {
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 
-app.get("/", (req, res) => {
-    //res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-    res.send("Hello");
-});
-
 app.use((err,req,res,next) =>{
     res.status(500).send({message: err.message});
 })
