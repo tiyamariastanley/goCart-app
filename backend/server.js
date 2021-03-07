@@ -4,6 +4,9 @@ import express from "express";
 import userRouter from "./routers/userRouter.js";
 import mongoose from "mongoose";
 import productRouter from "./routers/productRouter.js";
+import path from "path";
+
+const __dirname = path.resolve(path.dirname(''));
 
 const app = express();
 app.use(express.json());
@@ -24,6 +27,9 @@ app.use((err,req,res,next) =>{
 
 if(process.env.NODE_ENV === "production"){
   app.use(express.static('frontend/build'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
 }
 
 let port = process.env.PORT||5000;
