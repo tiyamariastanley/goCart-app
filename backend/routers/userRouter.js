@@ -18,11 +18,7 @@ userRouter.get('/seed', expressAsyncHandler(async (req, res) =>{
 userRouter.post('/signin', expressAsyncHandler(async (req, res) =>{
     console.log("inside signin");
     User.findOne({email: req.body.email},(err,foundUser) =>{
-      if(err){
-        console.log(err);
-        res.send({message:err})
-      }
-      else if(foundUser)
+      if(foundUser)
       {
         if(bcrypt.compareSync(req.body.password,foundUser.password)){
           console.log("Login Successfull");
@@ -34,9 +30,12 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) =>{
             token: generateToken(foundUser)
           });
         } else{
-          console.log("User not found...Please register");
+          console.log("Incorrect Password");
           res.status(401).send({ message: 'Invalid email or password' });
         }
+      }else{
+          console.log("User not found...Please register");
+          res.status(401).send({ message: 'Invalid email or password' });
       }
   })
 }));

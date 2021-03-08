@@ -39,7 +39,7 @@ function ShippingScreen(props){
             <input type="text" name="city" placeholder="Enter City*" value={city} required onChange={(e) => setCity(e.target.value)}/>
             <input type="text" name="pin" placeholder="Enter Postal Code*" value={pin} required onChange={(e) => setPin(e.target.value)}/>
             <input type="text" name="phoneno" placeholder="Enter Phone No*" value={phoneno} required onChange={(e) => setPhoneNo(e.target.value)}/>
-            <Button type="submit" variant="contained" color="secondary">Register</Button>
+            <Button type="submit" variant="contained" color="secondary">Continue</Button>
         </form>
         </Container>
     </div>
