@@ -5,7 +5,8 @@ import {
   PRODUCT_LIST_SUCCESS,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
-  PRODUCT_DETAILS_FAIL
+  PRODUCT_DETAILS_FAIL,
+  FIND_PRODUCT_REQUEST
 } from '../constants/productConstants';
 
 export const listProducts = () => async (dispatch) => {
@@ -32,4 +33,9 @@ export const detailsProduct = (productId) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: PRODUCT_DETAILS_FAIL , payload: error.message });
   }
+};
+
+export const findProduct = (query) => async (dispatch) => {
+    console.log(query);
+    dispatch({ type: FIND_PRODUCT_REQUEST, payload: query });
 };

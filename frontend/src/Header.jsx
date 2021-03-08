@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Badge from '@material-ui/core/Badge';
 import SearchIcon from '@material-ui/icons/Search';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
@@ -8,15 +8,31 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { userSignout } from "./actions/userActions";
-import lodash from 'lodash';
-var _ = lodash;
+import { findProduct, listProducts } from "./actions/productActions";
 
 function Header(){
   const cart = useSelector((state) => state.cartList);
   const { cartItems } = cart;
   const userData = useSelector( state => state.userSignin);
   const {userDetails} = userData;
+  const [query,find] = useState();
   const dispatch = useDispatch();
+
+  function searchFun(){
+    console.log("inside query");
+    if(query === "")
+      dispatch(listProducts());
+    else
+      dispatch(findProduct(query));
+  }
+
+  function handleKey(e){
+    console.log(e.key);
+    if(e.key === "Enter")
+      dispatch(findProduct(query));
+    else if(query === "")
+      dispatch(listProducts());
+  }
 
   function logouthandler(){
     dispatch(userSignout());
@@ -29,9 +45,9 @@ function Header(){
         <Link to="/">goCart</Link>
         </div>
         <div className="desktop-query">
-          <input placeholder="Search for products" className="desktop-searchBar"></input>
+          <input placeholder="Search for products" className="desktop-searchBar" name="query" required onChange={(e) => find(e.target.value)} onKeyDown={handleKey}></input>
             <a className="desktop-submit">
-              <span className="desktop-iconSearch sprites-search"><SearchIcon/></span>
+              <span className="desktop-iconSearch sprites-search"><SearchIcon onClick={searchFun}/></span>
             </a>
         </div>
         <div className="">
