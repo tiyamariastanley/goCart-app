@@ -20,7 +20,7 @@ function HomeScreen(){
             {loading?<Loading></Loading>:(
                  error?<Error imgSrc="https://constant.myntassets.com/web/assets/img/11488523304066-search404.png" heading="We couldn't find any matches!" para="Please check the spelling or try searching something else"></Error>:
              
-                <div className="top row center">
+                <div className="row center homescreen">
                     {
                         products.map((product,index) => (
                         <CardTemplate key={product._id}  product={product} ></CardTemplate>

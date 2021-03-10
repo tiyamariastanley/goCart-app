@@ -38,7 +38,7 @@ function PlaceOrder(props){
         <CheckoutComponent step1 step2 step3 step4></CheckoutComponent>
         <div className="placeOrder">
             <div className="container1">
-            <h5 style={{textAlign:"left"}}>Review your order</h5>
+                <h5 style={{textAlign:"left"}}>Review your order</h5>
                 <div className="orderDetails">
                         <div className="itemDetails">
                                 <h6>Shipping Address</h6>
@@ -95,7 +95,7 @@ function PlaceOrder(props){
                     <div><h6>Total Amount: </h6></div>
                     <div className="itemPrice"><h6>₹ {cart.totalPrice}</h6></div>
                 </div>
-                <Button2 className="cartButton" variant="contained" color="secondary" onClick={placeOrder}>PLACE ORDER</Button2>
+                <Button2 className="cartButton" variant="contained" color="secondary" onClick={placeOrder}>PAY NOW</Button2>
             </div>
         </div>
     </div>
