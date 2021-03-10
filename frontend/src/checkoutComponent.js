@@ -1,7 +1,7 @@
 function CheckoutComponent(props){
     console.log(props);
     return(
-        <div className="checkoutSteps">
+        <div className="row checkoutSteps">
             <div className={props.step1? "active" : ""}>Signin</div>
             <div className={props.step2? "active" : ""}>Shipping</div>
             <div className={props.step3? "active" : ""}>Payment</div>

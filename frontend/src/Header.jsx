@@ -39,10 +39,10 @@ function Header(){
   }
 
   return(
-    <div fixed="top" className="navbar">
+    <div className="row navbar">
         <div className="navbar-brand">
-        <img src={logo} weign="40" height="40" alt=""/>
-        <Link to="/">goCart</Link>
+          <img src={logo} weign="40" height="40" alt=""/>
+          <Link to="/">goCart</Link>
         </div>
         <div className="desktop-query">
           <input placeholder="Search for products" className="desktop-searchBar" name="query" required onChange={(e) => find(e.target.value)} onKeyDown={handleKey}></input>
@@ -50,7 +50,7 @@ function Header(){
               <span className="desktop-iconSearch sprites-search"><SearchIcon onClick={searchFun}/></span>
             </a>
         </div>
-        <div className="">
+        <div className="box3">
           {
             userDetails? 
             <NavDropdown title={userDetails.name} id="nav-dropdown">

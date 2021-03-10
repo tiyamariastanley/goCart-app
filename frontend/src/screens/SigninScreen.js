@@ -25,7 +25,7 @@ function SigninScreen(props){
   },[props.history,query,userDetails])
 
   return(
-  <Container className="top register">
+  <Container className="register">
     <h4>Login</h4>
     <hr></hr>
     <form onSubmit={submitHandler}>

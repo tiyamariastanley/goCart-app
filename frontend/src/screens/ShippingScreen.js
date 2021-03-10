@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
-import { Container } from "@material-ui/core";
 import CheckoutComponent from "../checkoutComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {shipmentAddress} from "../actions/cartActions";
@@ -30,18 +29,18 @@ function ShippingScreen(props){
     return(
     <div>
         <CheckoutComponent step1 step2></CheckoutComponent>
-        <Container className="shipping">
-        <h5>Shipping Address</h5>
-        <hr></hr>
-        <form onSubmit={submitHandler}>
-            <input type="text" name="name" placeholder="Enter Full Name*" value={name} required onChange={(e) => setName(e.target.value)}/>
-            <input type="text" name="address" placeholder="Enter Address*" value={address} required onChange={(e) => setAddress(e.target.value)}/>
-            <input type="text" name="city" placeholder="Enter City*" value={city} required onChange={(e) => setCity(e.target.value)}/>
-            <input type="text" name="pin" placeholder="Enter Postal Code*" value={pin} required onChange={(e) => setPin(e.target.value)}/>
-            <input type="text" name="phoneno" placeholder="Enter Phone No*" value={phoneno} required onChange={(e) => setPhoneNo(e.target.value)}/>
-            <Button type="submit" variant="contained" color="secondary">Continue</Button>
-        </form>
-        </Container>
+        <div className="shipping">
+            <h5>Shipping Address</h5>
+            <hr></hr>
+            <form onSubmit={submitHandler}>
+                <input type="text" name="name" placeholder="Enter Full Name*" value={name} required onChange={(e) => setName(e.target.value)}/>
+                <input type="text" name="address" placeholder="Enter Address*" value={address} required onChange={(e) => setAddress(e.target.value)}/>
+                <input type="text" name="city" placeholder="Enter City*" value={city} required onChange={(e) => setCity(e.target.value)}/>
+                <input type="text" name="pin" placeholder="Enter Postal Code*" value={pin} required onChange={(e) => setPin(e.target.value)}/>
+                <input type="text" name="phoneno" placeholder="Enter Phone No*" value={phoneno} required onChange={(e) => setPhoneNo(e.target.value)}/>
+                <Button type="submit" variant="contained" color="secondary">Continue</Button>
+            </form>
+        </div>
     </div>
     );
 }

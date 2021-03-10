@@ -36,9 +36,9 @@ function PlaceOrder(props){
     return(
     <div>
         <CheckoutComponent step1 step2 step3 step4></CheckoutComponent>
-        <h5 style={{marginLeft:"8rem"}}>Review your order</h5>
         <div className="placeOrder">
-            <div>
+            <div className="container1">
+            <h5 style={{textAlign:"left"}}>Review your order</h5>
                 <div className="orderDetails">
                         <div className="itemDetails">
                                 <h6>Shipping Address</h6>
@@ -57,14 +57,16 @@ function PlaceOrder(props){
                     {
                         cartItems.map((item,index) => (
                         <div className="cartItem">
-                            <Link to={`/product/${item.pid}`}>
-                                <img  alt="" src={item.image}></img>
-                            </Link>
-                            <div className="itemDetails">
+                            <div className="img">
                                 <Link to={`/product/${item.pid}`}>
-                                    <h6>{item.brand}</h6>
-                                    <p>{item.name}</p>
+                                    <img  alt="" src={item.image}></img>
                                 </Link>
+                                <div className="itemDetails">
+                                    <Link to={`/product/${item.pid}`}>
+                                        <h6>{item.brand}</h6>
+                                        <p>{item.name}</p>
+                                    </Link>
+                                </div>
                             </div>
                             <div className="itemDetails itemPrice">
                                 <h6 className="price">{item.qty} x {item.price} = ₹ {Number(item.qty)*Number(item.price)}</h6>
@@ -74,8 +76,8 @@ function PlaceOrder(props){
                     </div>
                 </div>
             </div>
-            <div className="cartPrice"> 
-                <p><b>ORDER SUMMARY ({cart.totalQty} {cart.totalQty>1 ? "Items" : "Item"})</b></p>
+            <div className="container2">
+                <p><b>PRICE DETAILS ({cart.totalQty} {cart.totalQty>1 ? "Items" : "Item"})</b></p>
                 <div className="orderAmount">
                     <div>
                         <p>Total MRP: </p>
@@ -84,7 +86,7 @@ function PlaceOrder(props){
                     </div>
                     <div className="itemPrice">
                         <p>₹ {cart.totalMrp}</p>
-                        <p>₹ 100.00</p>
+                        <p>₹ {cart.shippingPrice}</p>
                         <p>₹ {cart.tax}</p>
                     </div>
                 </div>

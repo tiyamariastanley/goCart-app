@@ -42,63 +42,65 @@ function CartScreen(props){
             {
                 cartItems.length > 0 ? (
                     <div className="top cartScreen">
-                    <div >
-                    {
-                        cartItems.map((item,index) => (
-                            <div className="cartItem" key={index}>
-                                <Link to={`/product/${item.pid}`}>
-                                <img  alt="" src={item.image}></img></Link>
-                                <div className="itemDetails">
-                                <Link to={`/product/${item.pid}`}>
-                                    <h6>{item.brand}</h6>
-                                    <p>{item.name}</p>
-                                    </Link>
-                                    <div className="dropdown">
-                                        <p>Qty: <select value={item.qty} onChange={(e) => {dispatch(addToCart(item.pid,Number(e.target.value)));}}>
-                                            {
-                                                [...Array(item.countInStock).keys()].map(num =>(        //.keys() generate array of 0 to item.countInStock
-                                                    <option key={num+1} value={num+1}>{num+1}</option>
-                                                ))
-                                            }
-                                            </select>
-                                        </p>
+                        <div className="container1">{
+                            cartItems.map((item,index) => (
+                                <div className="cartItem" key={index}>
+                                    <div className="img">
+                                        <Link to={`/product/${item.pid}`}>
+                                            <img alt="" src={item.image}></img>
+                                        </Link>
+                                        <div className="itemDetails">
+                                            <Link to={`/product/${item.pid}`}>
+                                                <h6>{item.brand}</h6>
+                                                <p>{item.name}</p>
+                                            </Link>
+                                            <div className="dropdown">
+                                                <p>Qty: <select value={item.qty} onChange={(e) => {dispatch(addToCart(item.pid,Number(e.target.value)));}}>
+                                                    {
+                                                        [...Array(item.countInStock).keys()].map(num =>(        //.keys() generate array of 0 to item.countInStock
+                                                            <option key={num+1} value={num+1}>{num+1}</option>
+                                                        ))
+                                                    }
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="itemDetails itemPrice">
+                                        <h6 className="price">₹ {Number(item.qty)*Number(item.price)}</h6>
+                                        <Button variant="outline-secondary" size="sm" onClick={() => {removeItem(item.pid)}}>Remove</Button>
                                     </div>
                                 </div>
-                                <div className="itemDetails itemPrice">
-                                <h6 className="price">₹ {Number(item.qty)*Number(item.price)}</h6>
-                                <Button variant="outline-secondary" size="sm" onClick={() => {removeItem(item.pid)}}>Remove</Button>
+                            ))
+                        }
+                        </div>
+
+                        <div className="container2">
+                            <p><b>PRICE DETAILS ({cart.totalQty} {cart.totalQty>1 ? "Items" : "Item"})</b></p>
+                            <div className="orderAmount">
+                                <div>
+                                    <p>Total MRP: </p>
+                                    <p>Convenience Fee: </p>
+                                    <p>Tax: </p>
+                                </div>
+                                <div className="itemPrice">
+                                    <p>₹ {cart.totalMrp}</p>
+                                    <p>₹ {cart.shippingPrice}</p>
+                                    <p>₹ {cart.tax}</p>
                                 </div>
                             </div>
-                        ))
-                     
-                    }  
-                    </div>
-                    <div className="cartPrice"> 
-                        <p><b>PRICE DETAILS ({cart.totalQty} {cart.totalQty>1 ? "Items" : "Item"})</b></p>
-                        <div className="orderAmount">
-                            <div>
-                                <p>Total MRP: </p>
-                                <p>Convenience Fee: </p>
-                                <p>Tax: </p>
+                            <hr></hr>
+                            <div className="orderAmount">
+                                <div><h6>Total Amount: </h6></div>
+                                <div className="itemPrice"><h6>₹ {cart.totalPrice}</h6></div>
                             </div>
-                            <div className="itemPrice">
-                                <p>₹ {cart.totalMrp}</p>
-                                <p>₹ {cart.shippingPrice}</p>
-                                <p>₹ {cart.tax}</p>
-                            </div>
+                            <Button2 className="cartButton" variant="contained" color="secondary" onClick={placeOrder}>PLACE ORDER</Button2>
                         </div>
-                        <hr></hr>
-                        <div className="orderAmount">
-                            <div><h6>Total Amount: </h6></div>
-                            <div className="itemPrice"><h6>₹ {cart.totalPrice}</h6></div>
-                        </div>
-                        <Button2 className="cartButton" variant="contained" color="secondary" onClick={placeOrder}>PLACE ORDER</Button2>
                     </div>
-                </div>  
                 )
                 :
                 (
-                <Error imgSrc="https://image.shutterstock.com/image-vector/dead-face-empty-paper-shopping-260nw-1126464314.jpg" heading="Hey, it feels so light!" para="There is nothing in your bag. Let's add some items."></Error>
+                    <Error imgSrc="https://image.shutterstock.com/image-vector/dead-face-empty-paper-shopping-260nw-1126464314.jpg" heading="Hey, it feels so light!" para="There is nothing in your bag. Let's add some items."></Error>
                 )
             }
         </div>

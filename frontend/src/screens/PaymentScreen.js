@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Button from '@material-ui/core/Button';
-import { Container } from "@material-ui/core";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -31,7 +30,7 @@ function PaymentScreen(props){
     return(
     <div>
         <CheckoutComponent step1 step2 step3></CheckoutComponent>
-        <Container className="shipping">
+        <div className="shipping">
         <h5>Payment Method</h5>
         <hr></hr>
         <form onSubmit={submitHandler}>
@@ -41,7 +40,7 @@ function PaymentScreen(props){
             </RadioGroup>
             <Button type="submit" variant="contained" color="secondary">Continue</Button>
         </form>
-        </Container>
+        </div>
     </div>
     );
 }

@@ -30,7 +30,7 @@ function RegisterScreen(props){
   },[props.history,query,userDetails])
 
     return(
-    <Container className="top register">
+    <Container className="register">
       <h4>Register</h4>
       <hr></hr>
       <form onSubmit={registerHandler}>
